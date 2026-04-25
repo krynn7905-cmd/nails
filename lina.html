@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxe Nails Studio — Beautiful Nails, Perfected for You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blush: #d9abab;
+  --rose: #e8b4b8;
+  --deep-rose: #c4717a;
+  --nude: #f0d9cc;
+  --cream: #faf6f3;
+  --gold: #c9a96e;
+  --gold-light: #e8d5a3;
+  --white: #ffffff;
+  --charcoal: #3a2e2e;
+  --muted: #3c3737;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+  --shadow: 0 4px 30px rgba(58,46,46,0.08);
+  --shadow-lg: 0 12px 60px rgba(58,46,46,0.15);
+  --radius: 16px;
+  --transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--blush); }
+::-webkit-scrollbar-thumb { background: var(--rose); border-radius: 3px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+  background: rgba(253,248,244,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,169,110,0.15);
+  transition: var(--transition);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 3rem; font-weight: 600;
+  color: var(--charcoal); letter-spacing: 1px;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display:flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  font-size: 1rem; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; color: var(--muted);
+  transition: var(--transition); font-weight: 500;
+}
+.nav-links a:hover { color: var(--deep-rose); }
+.nav-actions { display:flex; gap: 1rem; align-items:center; }
+.btn-nav {
+  padding: 0.55rem 1.4rem;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-body); font-size: 1rem; letter-spacing: 1.5px;
+  text-transform: uppercase; cursor: pointer; border-radius: 40px;
+  transition: var(--transition);
+}
+.btn-nav:hover { background: var(--gold); color: var(--white); }
+.cart-btn {
+  position: relative; background: none; border: none; cursor: pointer;
+  font-size: 1.3rem; color: var(--charcoal); transition: var(--transition);
+}
+.cart-btn:hover { color: var(--deep-rose); transform: scale(1.1); }
+.cart-count {
+  position: absolute; top: -8px; right: -8px;
+  background: var(--deep-rose); color: white;
+  border-radius: 50%; width: 18px; height: 18px;
+  font-size: 0.65rem; display: flex; align-items: center; justify-content: center;
+  font-weight: 600; display: none;
+}
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background:none; border:none; }
+.hamburger span { width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: var(--transition); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 0;
+  padding-top: 80px;
+}
+.hero-content {
+  padding: 4rem 3rem 4rem 5rem;
+  animation: fadeUp 1s ease both;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  background: linear-gradient(135deg, var(--gold-light), var(--nude));
+  border-radius: 40px; font-size: 0.7rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1.1; font-weight: 300;
+  color: var(--charcoal); margin-bottom: 1rem;
+}
+.hero-title em { color: var(--deep-rose); font-style: italic; }
+.hero-tagline {
+  font-size: 1.25rem; color: var(--muted); margin-bottom: 2.5rem;
+  font-weight: 300; line-height: 1.8; max-width: 400px;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  padding: 0.9rem 2.2rem;
+  background: linear-gradient(135deg, var(--deep-rose), #a85860);
+  color: white; border: none; border-radius: 50px;
+  font-family: var(--font-body); font-size: 0.8rem;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: var(--transition);
+  box-shadow: 0 6px 25px rgba(196,113,122,0.4);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(196,113,122,0.5); }
+.btn-outline {
+  padding: 0.9rem 2.2rem;
+  background: transparent;
+  color: var(--charcoal); border: 1.5px solid var(--rose);
+  border-radius: 50px; font-family: var(--font-body);
+  font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: var(--transition);
+}
+.btn-outline:hover { background: var(--rose); color: white; border-color: var(--rose); }
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3rem;
+  padding-top: 2rem; border-top: 1px solid rgba(201,169,110,0.2);
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: var(--font-display); font-size: 2.2rem;
+  font-weight: 600; color: var(--gold); display: block;
+}
+.stat-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
+.hero-visual {
+  height: 100vh; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--blush), var(--nude));
+}
+.hero-image-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr; height: 100%; gap: 8px; padding: 8px;
+}
+.hero-img-card {
+  border-radius: 12px; overflow: hidden; position: relative;
+}
+.hero-img-card:first-child { grid-row: span 2; }
+.nail-visual {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem;
+  background: linear-gradient(135deg, var(--blush) 0%, var(--rose) 50%, var(--nude) 100%);
+  position: relative; overflow: hidden;
+}
+.nail-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), transparent 60%);
+}
+.nail-visual-1 { background: linear-gradient(135deg, #f2cdd4, #e8a0ab); }
+.nail-visual-2 { background: linear-gradient(135deg, #f0d9cc, #e8c4a0); }
+.nail-visual-3 { background: linear-gradient(135deg, #e8d5a3, #d4b87a); }
+.floating-tag {
+  position: absolute; bottom: 1.5rem; left: 1.5rem;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
+  padding: 0.6rem 1rem; border-radius: 8px;
+  font-size: 0.75rem; font-weight: 500; color: var(--charcoal);
+  box-shadow: var(--shadow);
+}
+.floating-tag span { color: var(--gold); font-weight: 600; }
+
+/* ── SECTIONS SHARED ── */
+section { padding: 5rem 5% }
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+.section-badge {
+  display: inline-block; font-size: 0.7rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 0.8rem; font-weight: 500;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300; line-height: 1.2;
+}
+.section-title em { color: var(--deep-rose); font-style: italic; }
+.section-subtitle { color: var(--muted); font-size: 0.9rem; margin-top: 0.8rem; font-weight: 300; }
+.gold-divider {
+  display: flex; align-items: center; gap: 1rem;
+  justify-content: center; margin: 1.5rem 0;
+}
+.gold-divider::before, .gold-divider::after {
+  content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold-light);
+}
+.gold-divider span { color: var(--gold); font-size: 0.8rem; }
+
+/* ── GALLERY ── */
+#gallery { background: var(--white); }
+.gallery-filters {
+  display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;
+}
+.filter-btn {
+  padding: 0.5rem 1.4rem; border-radius: 40px;
+  border: 1px solid var(--rose); background: transparent;
+  font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 1px;
+  text-transform: uppercase; cursor: pointer; color: var(--muted);
+  transition: var(--transition);
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--deep-rose); color: white; border-color: var(--deep-rose);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.design-card {
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--cream); box-shadow: var(--shadow);
+  transition: var(--transition); cursor: pointer;
+  border: 1px solid rgba(232,180,184,0.2);
+}
+.design-card:hover {
+  transform: translateY(-6px); box-shadow: var(--shadow-lg);
+}
+.design-card-image {
+  height: 240px; position: relative; overflow: hidden;
+}
+.design-visual {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; transition: transform 0.5s ease;
+  position: relative;
+}
+.design-card:hover .design-visual { transform: scale(1.05); }
+.design-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(58,46,46,0.5));
+}
+.design-badge-card {
+  position: absolute; top: 1rem; right: 1rem;
+  background: rgba(255,255,255,0.9); backdrop-filter: blur(8px);
+  padding: 0.3rem 0.7rem; border-radius: 20px;
+  font-size: 0.7rem; font-weight: 600; color: var(--gold);
+}
+.design-card-body { padding: 1.2rem; }
+.design-name {
+  font-family: var(--font-display); font-size: 1.2rem;
+  font-weight: 400; margin-bottom: 0.3rem;
+}
+.design-desc { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.8rem; font-weight: 300; }
+.design-footer { display: flex; align-items: center; justify-content: space-between; }
+.design-price {
+  font-size: 1.1rem; font-weight: 600; color: var(--deep-rose);
+  font-family: var(--font-display);
+}
+.btn-select {
+  padding: 0.5rem 1.2rem; border-radius: 30px;
+  background: linear-gradient(135deg, var(--deep-rose), #a85860);
+  color: white; border: none; font-family: var(--font-body);
+  font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; transition: var(--transition);
+}
+.btn-select:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(196,113,122,0.4); }
+.btn-select.selected { background: linear-gradient(135deg, var(--gold), #b8924f); }
+
+/* ── BOOKING ── */
+#booking {
+  background: linear-gradient(135deg, var(--blush), var(--cream));
+}
+.booking-container {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  max-width: 900px; margin: 0 auto;
+}
+.booking-panel {
+  background: white; border-radius: var(--radius);
+  padding: 2rem; box-shadow: var(--shadow);
+}
+.panel-title {
+  font-family: var(--font-display); font-size: 1.4rem;
+  margin-bottom: 1.5rem; color: var(--charcoal);
+}
+.form-group { margin-bottom: 1.2rem; }
+.form-label {
+  display: block; font-size: 1.25rem; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; font-weight: 500;
+}
+.form-input, .form-select {
+  width: 100%; padding: 1rem 1rem;
+  border: 1.5px solid rgba(232,180,184,0.4);
+  border-radius: 10px; font-family: var(--font-body); font-size:0.88rem;
+  color: var(--charcoal); background: var(--cream);
+  transition: var(--transition); outline: none;
+}
+.form-input:focus, .form-select:focus {
+  border-color: var(--rose); background: white;
+  box-shadow: 0 0 0 3px rgba(232,180,184,0.2);
+}
+.time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin-top: 0.5rem; }
+.time-slot {
+  padding: 0.6rem 0.4rem; border-radius: 8px; text-align: center;
+  font-size: 2rem; font-weight: 500; cursor: pointer;
+  border: 1.5px solid rgba(232,180,184,0.3); background: var(--cream);
+  transition: var(--transition); color: var(--charcoal);
+}
+.time-slot:hover:not(.booked) { border-color: var(--rose); background: var(--blush); }
+.time-slot.selected { background: var(--deep-rose); color: white; border-color: var(--deep-rose); }
+.time-slot.booked { background: #f5f5f5; color: #ccc; cursor: not-allowed; border-color: #eee; text-decoration: line-through; }
+.availability-msg {
+  padding: 0.8rem 1rem; border-radius: 8px; font-size: 1rem;
+  margin-top: 0.8rem; display: none;
+}
+.availability-msg.available { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; display: block; }
+.availability-msg.unavailable { background: #fce4ec; color: #c62828; border: 1px solid #f8bbd0; display: block; }
+.booking-summary { }
+.summary-item {
+  display: flex; justify-content: space-between;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--blush);
+  font-size: 1rem;
+}
+.summary-label { color: var(--muted); }
+.summary-value { font-weight: 500; }
+.btn-book {
+  width: 100%; padding: 1rem; margin-top: 1.5rem;
+  background: linear-gradient(135deg, var(--deep-rose), #a85860);
+  color: white; border: none; border-radius: 50px;
+  font-family: var(--font-body); font-size: 0.82rem;
+  letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+  transition: var(--transition); box-shadow: 0 6px 25px rgba(196,113,122,0.3);
+}
+.btn-book:hover { transform: translateY(-2px); box-shadow: 0 10px 35px rgba(196,113,122,0.5); }
+
+/* ── AUTH MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(58,46,46,0.5); backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: white; border-radius: 20px;
+  padding: 2.5rem; width: 100%; max-width: 420px;
+  box-shadow: var(--shadow-lg);
+  animation: modalIn 0.4s cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.modal-title { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; }
+.modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted); transition: var(--transition); }
+.modal-close:hover { color: var(--charcoal); transform: rotate(90deg); }
+.modal-tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; border: 1.5px solid var(--rose); }
+.tab-btn {
+  flex: 1; padding: 0.7rem; border: none; background: transparent;
+  font-family: var(--font-body); font-size: 0.78rem; letter-spacing: 1px;
+  text-transform: uppercase; cursor: pointer; color: var(--muted); transition: var(--transition);
+}
+.tab-btn.active { background: var(--deep-rose); color: white; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.btn-submit {
+  width: 100%; padding: 0.9rem; margin-top: 1rem;
+  background: linear-gradient(135deg, var(--deep-rose), #a85860);
+  color: white; border: none; border-radius: 50px;
+  font-family: var(--font-body); font-size: 0.8rem;
+  letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+  transition: var(--transition);
+}
+.btn-submit:hover { box-shadow: 0 6px 25px rgba(196,113,122,0.4); }
+
+/* ── CART PANEL ── */
+.cart-panel {
+  position: fixed; right: 0; top: 0; bottom: 0; z-index: 1500;
+  width: 360px; background: white;
+  box-shadow: -10px 0 50px rgba(58,46,46,0.15);
+  transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+  display: flex; flex-direction: column;
+}
+.cart-panel.open { transform: translateX(0); }
+.cart-header {
+  padding: 1.5rem; border-bottom: 1px solid var(--blush);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cart-title { font-family: var(--font-display); font-size: 1.5rem; }
+.cart-body { flex: 1; overflow-y: auto; padding: 1.5rem; }
+.cart-item {
+  display: flex; gap: 1rem; align-items: center;
+  padding: 0.8rem 0; border-bottom: 1px solid var(--blush);
+}
+.cart-item-visual {
+  width: 56px; height: 56px; border-radius: 10px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0;
+}
+.cart-item-info { flex: 1; }
+.cart-item-name { font-weight: 500; font-size: 0.88rem; }
+.cart-item-price { color: var(--deep-rose); font-size: 0.82rem; font-weight: 600; margin-top: 0.2rem; }
+.cart-item-remove {
+  background: none; border: none; color: #ccc; cursor: pointer;
+  font-size: 1.1rem; transition: var(--transition);
+}
+.cart-item-remove:hover { color: var(--deep-rose); }
+.cart-footer { padding: 1.5rem; border-top: 1px solid var(--blush); }
+.cart-total { display: flex; justify-content: space-between; margin-bottom: 1rem; font-weight: 600; }
+.btn-whatsapp {
+  width: 100%; padding: 1rem; border-radius: 50px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white; border: none; font-family: var(--font-body);
+  font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+}
+.btn-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,211,102,0.4); }
+.cart-empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+.cart-empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+/* ── ADMIN PANEL ── */
+#admin { background: var(--white); }
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.admin-card {
+  background: var(--cream); border-radius: var(--radius);
+  padding: 1.8rem; box-shadow: var(--shadow);
+  border: 1px solid rgba(201,169,110,0.15);
+}
+.admin-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.admin-icon { font-size: 1.8rem; }
+.admin-card-title { font-family: var(--font-display); font-size: 1.2rem; }
+.admin-stat { font-size: 2rem; font-weight: 600; color: var(--deep-rose); font-family: var(--font-display); }
+.admin-stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+.booking-list { margin-top: 1rem; }
+.booking-entry {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--blush);
+  font-size: 0.82rem;
+}
+.booking-entry:last-child { border-bottom: none; }
+.be-name { font-weight: 500; }
+.be-time { color: var(--muted); }
+.be-status {
+  font-size: 0.68rem; padding: 0.25rem 0.6rem; border-radius: 20px;
+  background: #e8f5e9; color: #2e7d32; font-weight: 500;
+}
+.customer-entry {
+  display: flex; align-items: center; gap: 0.8rem;
+  padding: 0.6rem 0; border-bottom: 1px solid var(--blush);
+}
+.customer-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 600; font-size: 0.85rem; flex-shrink: 0;
+}
+.customer-name { font-weight: 500; font-size: 0.85rem; }
+.customer-meta { font-size: 0.72rem; color: var(--muted); }
+.notify-form { }
+.notify-textarea {
+  width: 100%; padding: 0.8rem; border: 1.5px solid rgba(232,180,184,0.3);
+  border-radius: 10px; font-family: var(--font-body); font-size: 0.85rem;
+  min-height: 80px; resize: vertical; outline: none; transition: var(--transition);
+  background: white;
+}
+.notify-textarea:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(232,180,184,0.2); }
+.btn-notify {
+  margin-top: 0.8rem; padding: 0.7rem 1.5rem; border-radius: 30px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white; border: none; font-family: var(--font-body);
+  font-size: 0.78rem; letter-spacing: 1px; text-transform: uppercase;
+  cursor: pointer; transition: var(--transition); width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.btn-notify:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,0.3); }
+
+/* ── CONTACT ── */
+#contact { background: linear-gradient(135deg, var(--charcoal) 0%, #2a1f1f 100%); color: white; }
+#contact .section-title { color: white; }
+#contact .section-badge { color: var(--gold-light); }
+#contact .section-subtitle { color: rgba(255,255,255,0.5); }
+.contact-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem; max-width: 900px; margin: 0 auto;
+}
+.contact-card {
+  background: rgba(255,255,255,0.07); border-radius: var(--radius);
+  padding: 1.8rem; text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: var(--transition);
+}
+.contact-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+.contact-icon { font-size: 1rem; margin-bottom: 1rem; display: block; }
+.contact-label { font-size: 1.25rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
+.contact-value { font-size: 1.25rem; color: rgba(255,255,255,0.8); }
+.contact-value a { color: inherit; text-decoration: none; }
+.contact-value a:hover { color: var(--gold-light); }
+.social-links { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+.social-link {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 1rem; color: white; transition: var(--transition);
+}
+.social-link:hover { background: var(--gold); transform: translateY(-2px); }
+.btn-whatsapp-contact {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.7rem 1.5rem; border-radius: 30px;
+  background: #25D366; color: white; text-decoration: none;
+  font-size: 1rem; letter-spacing: 1px; text-transform: uppercase;
+  margin-top: 0.8rem; transition: var(--transition); font-family: var(--font-body);
+}
+.btn-whatsapp-contact:hover { background: #128C7E; transform: translateY(-2px); }
+
+/* ── FOOTER ── */
+footer {
+  background: #1a1010; padding: 2rem 5%;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+  border-top: 1px solid rgba(201,169,110,0.1);
+}
+.footer-logo { font-family: var(--font-display); color: white; font-size: 1.3rem; }
+.footer-logo span { color: var(--gold); }
+.footer-copy { color: rgba(255,255,255,0.3); font-size: 0.78rem; }
+
+/* ── FLOATING WHATSAPP ── */
+.fab-whatsapp {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 900;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; color: white; border: none;
+  font-size: 1.6rem; cursor: pointer; box-shadow: 0 6px 25px rgba(37,211,102,0.5);
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); text-decoration: none;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 6px 25px rgba(37,211,102,0.5); }
+  50% { box-shadow: 0 6px 40px rgba(37,211,102,0.8), 0 0 0 12px rgba(37,211,102,0.1); }
+}
+.fab-whatsapp:hover { transform: scale(1.1); }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(100px);
+  background: var(--charcoal); color: white; padding: 0.8rem 1.8rem;
+  border-radius: 30px; font-size: 0.85rem; z-index: 3000;
+  transition: var(--transition); box-shadow: var(--shadow-lg);
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animate-up.visible { opacity: 1; transform: translateY(0); }
+.animate-up:nth-child(2) { transition-delay: 0.1s; }
+.animate-up:nth-child(3) { transition-delay: 0.2s; }
+.animate-up:nth-child(4) { transition-delay: 0.3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  #hero { grid-template-columns: 1fr; }
+  .hero-content { padding: 2rem 1.5rem; }
+  .hero-visual { height: 350px; }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute;
+    top: 70px; left: 0; right: 0; background: var(--cream);
+    padding: 1.5rem; border-bottom: 1px solid var(--rose); gap: 1.2rem;
+    box-shadow: var(--shadow);
+  }
+  .booking-container { grid-template-columns: 1fr; }
+  .hero-stats { gap: 1.5rem; }
+  section { padding: 3.5rem 5%; }
+  .cart-panel { width: 100%; }
+}
+@media (max-width: 600px) {
+  .hero-title { font-size: 2.5rem; }
+  .admin-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+/* ── DECORATIVE ── */
+.petals {
+  position: absolute; pointer-events: none; overflow: hidden; inset: 0;
+}
+.petal {
+  position: absolute; width: 8px; height: 8px; border-radius: 50% 0;
+  background: rgba(232,180,184,0.5); animation: fall linear infinite;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Auth badge display */
+.auth-badge {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.8rem; color: var(--muted);
+}
+.auth-badge-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #4caf50;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Luxe<span>Nails</span></div>
+  <div class="nav-links" id="navLinks">
+    <a href="#hero">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#booking">Book</a>
+    <a href="#admin">Admin</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <div id="authStatus" class="auth-badge" style="display:none">
+      <div class="auth-badge-dot"></div>
+      <span id="authName"></span>
+    </div>
+    <button class="btn-nav" id="loginBtn" onclick="openModal()">Login</button>
+    <button class="btn-nav" id="logoutBtn" style="display:none" onclick="logout()">Logout</button>
+    <button class="cart-btn" onclick="toggleCart()" title="View Cart">
+      🛍️
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✨ Premium Nail Studio</div>
+    <h1 class="hero-title">Beautiful Nails,<br><em>Perfected</em> for You</h1>
+    <p class="hero-tagline">Where artistry meets elegance. We craft bespoke nail designs tailored to your unique style — because every detail matters.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">📅 Book Appointment</button>
+      <button class="btn-outline" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">💅 View Designs</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">500+</span><span class="stat-label">Happy Clients</span></div>
+      <div class="stat-item"><span class="stat-num">120+</span><span class="stat-label">Designs</span></div>
+      <div class="stat-item"><span class="stat-num">5★</span><span class="stat-label">Rated</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-image-grid">
+      <div class="hero-img-card">
+        <div class="nail-visual nail-visual-1">
+           <img src="images/a3.jpg" alt="Nail Design" class="nail-img">
+            <ellipse cx="80" cy="110" rx="55" ry="75" fill="rgba(255,255,255,0.4)"/>
+            <ellipse cx="55" cy="115" rx="22" ry="60" fill="rgba(255,255,255,0.35)" transform="rotate(-10 55 115)"/>
+            <ellipse cx="105" cy="115" rx="22" ry="60" fill="rgba(255,255,255,0.35)" transform="rotate(10 105 115)"/>
+            <ellipse cx="30" cy="120" rx="18" ry="50" fill="rgba(255,255,255,0.3)" transform="rotate(-20 30 120)"/>
+            <ellipse cx="130" cy="120" rx="18" ry="50" fill="rgba(255,255,255,0.3)" transform="rotate(20 130 120)"/>
+            <circle cx="80" cy="55" r="18" fill="rgba(255,255,255,0.5)"/>
+            <circle cx="55" cy="62" r="12" fill="rgba(255,255,255,0.45)"/>
+            <circle cx="105" cy="62" r="12" fill="rgba(255,255,255,0.45)"/>
+            <circle cx="30" cy="70" r="10" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="130" cy="70" r="10" fill="rgba(255,255,255,0.4)"/>
+            <!-- Nail art dots -->
+            <circle cx="80" cy="95" r="4" fill="rgba(201,169,110,0.8)"/>
+            <circle cx="68" cy="88" r="3" fill="rgba(201,169,110,0.7)"/>
+            <circle cx="92" cy="88" r="3" fill="rgba(201,169,110,0.7)"/>
+          </svg>
+        </div>
+        <div class="floating-tag">Gel Art <span>from KES 2,500</span></div>
+      </div>
+      <div class="hero-img-card">
+        <div class="nail-visual nail-visual-2" style="background:linear-gradient(135deg,#f5e6d3,#e8c9a8)">
+       <img src="images/a2.jpg" alt="Nail Design" class="nail-img">
+            <ellipse cx="40" cy="55" rx="28" ry="38" fill="rgba(255,255,255,0.5)"/>
+            <circle cx="40" cy="25" r="12" fill="rgba(255,255,255,0.6)"/>
+            <!-- flower -->
+            <circle cx="40" cy="55" r="5" fill="rgba(196,113,122,0.7)"/>
+            <circle cx="40" cy="44" r="4" fill="rgba(232,180,184,0.8)"/>
+            <circle cx="40" cy="66" r="4" fill="rgba(232,180,184,0.8)"/>
+            <circle cx="29" cy="55" r="4" fill="rgba(232,180,184,0.8)"/>
+            <circle cx="51" cy="55" r="4" fill="rgba(232,180,184,0.8)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hero-img-card">
+        <div class="nail-visual nail-visual-3" style="background:linear-gradient(135deg,#f3d8bf,#d4a574)">
+            <img src="images/a4.jpg" alt="Nail Design" class="nail-img">
+            <ellipse cx="40" cy="55" rx="28" ry="38" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="40" cy="25" r="12" fill="rgba(255,255,255,0.5)"/>
+            <!-- glitter effect -->
+            <circle cx="33" cy="45" r="2" fill="rgba(201,169,110,0.9)"/>
+            <circle cx="47" cy="42" r="2" fill="rgba(201,169,110,0.9)"/>
+            <circle cx="38" cy="60" r="2" fill="rgba(201,169,110,0.9)"/>
+            <circle cx="50" cy="58" r="2" fill="rgba(201,169,110,0.9)"/>
+            <circle cx="30" cy="65" r="2" fill="rgba(201,169,110,0.9)"/>
+            <circle cx="44" cy="72" r="2" fill="rgba(201,169,110,0.9)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header animate-up">
+    <div class="section-badge">Our Designs</div>
+    <h2 class="section-title">Nail <em>Collections</em></h2>
+    <div class="gold-divider"><span>✦</span></div>
+    <p class="section-subtitle">Choose from our curated collection of stunning designs</p>
+  </div>
+  <div class="gallery-filters animate-up">
+    <button class="filter-btn active" onclick="filterDesigns('all', this)">All Designs</button>
+    <button class="filter-btn" onclick="filterDesigns('gel', this)">Gel</button>
+    <button class="filter-btn" onclick="filterDesigns('acrylic', this)">Acrylic</button>
+    <button class="filter-btn" onclick="filterDesigns('nail-art', this)">Nail Art</button>
+    <button class="filter-btn" onclick="filterDesigns('ombre', this)">Ombré</button>
+    <button class="filter-btn" onclick="filterDesigns('french', this)">French</button>
+  </div>
+  <div class="gallery-grid" id="galleryGrid"></div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-header animate-up">
+    <div class="section-badge">Schedule</div>
+    <h2 class="section-title">Book Your <em>Appointment</em></h2>
+    <div class="gold-divider"><span>✦</span></div>
+    <p class="section-subtitle">Pick a date and time that works for you</p>
+  </div>
+  <div class="booking-container">
+    <div class="booking-panel animate-up">
+      <h3 class="panel-title">Select Date & Time</h3>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" id="bookName" placeholder="Full name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" class="form-input" id="bookPhone" placeholder="+254 7XX XXX XXX">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service</label>
+        <select class="form-select" id="bookService">
+          <option value="">Choose a service…</option>
+          <option value="Gel Manicure">Gel Manicure — KES 2,500</option>
+          <option value="Acrylic Full Set">Acrylic Full Set — KES 3,500</option>
+          <option value="Nail Art">Nail Art — KES 1,500+</option>
+          <option value="Ombré Nails">Ombré Nails — KES 3,000</option>
+          <option value="French Manicure">French Manicure — KES 2,000</option>
+          <option value="Nail Repair">Nail Repair — KES 500</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-input" id="bookDate" onchange="loadSlots()">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Available Time Slots</label>
+        <div class="time-slots" id="timeSlots">
+          <p style="color:var(--muted);font-size:0.8rem;grid-column:span 3">Please select a date first</p>
+        </div>
+      </div>
+      <div class="availability-msg" id="availMsg"></div>
+      <button class="btn-book" onclick="confirmBooking()">✨ Confirm Booking via WhatsApp</button>
+    </div>
+    <div class="booking-panel animate-up" id="bookingSummaryPanel">
+      <h3 class="panel-title">Booking Summary</h3>
+      <div id="bookingSummaryItems">
+        <p style="color:var(--muted);font-size:0.85rem">Your booking details will appear here as you fill in the form.</p>
+      </div>
+      <div style="margin-top:2rem;padding:1.5rem;background:var(--blush);border-radius:12px;">
+        <div style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:0.8rem">📍 Our Location</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.8">Luxe Nails Studio<br>Gilgil Town Centre<br>Nakuru County, Kenya</p>
+        <div style="margin-top:1rem;font-size:0.82rem;color:var(--muted)">
+          <div>🕐 Mon – Sat: 8:00 AM – 7:00 PM</div>
+          <div>🕐 Sunday: 10:00 AM – 5:00 PM</div>
+        </div>
+      </div>
+      <div style="margin-top:1rem;padding:1rem;background:linear-gradient(135deg,var(--gold-light),var(--nude));border-radius:12px;">
+        <div style="font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:0.5rem">💳 Payment</div>
+        <p style="font-size:0.8rem;color:var(--charcoal)">We accept M-Pesa, Cash and Card payments. A 30% deposit confirms your booking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADMIN -->
+<section id="admin">
+  <div class="section-header animate-up">
+    <div class="section-badge">Management</div>
+    <h2 class="section-title">Admin <em>Dashboard</em></h2>
+    <div class="gold-divider"><span>✦</span></div>
+    <p class="section-subtitle">Manage bookings, customers, and notifications</p>
+  </div>
+  <div class="admin-grid">
+    <!-- Stats -->
+    <div class="admin-card animate-up">
+      <div class="admin-card-header">
+        <span class="admin-icon">📊</span>
+        <div class="admin-card-title">Overview</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div><div class="admin-stat" id="statBookings">0</div><div class="admin-stat-label">Bookings</div></div>
+        <div><div class="admin-stat" id="statCustomers">0</div><div class="admin-stat-label">Customers</div></div>
+        <div><div class="admin-stat" id="statDesigns">12</div><div class="admin-stat-label">Designs</div></div>
+        <div><div class="admin-stat" id="statRevenue">—</div><div class="admin-stat-label">Revenue</div></div>
+      </div>
+    </div>
+    <!-- Bookings -->
+    <div class="admin-card animate-up">
+      <div class="admin-card-header">
+        <span class="admin-icon">📅</span>
+        <div class="admin-card-title">Recent Bookings</div>
+      </div>
+      <div class="booking-list" id="adminBookingList">
+        <p style="color:var(--muted);font-size:0.82rem">No bookings yet</p>
+      </div>
+    </div>
+    <!-- Customers -->
+    <div class="admin-card animate-up">
+      <div class="admin-card-header">
+        <span class="admin-icon">👤</span>
+        <div class="admin-card-title">Customers</div>
+      </div>
+      <div id="adminCustomerList">
+        <p style="color:var(--muted);font-size:0.82rem">No customers yet</p>
+      </div>
+    </div>
+    <!-- Notify -->
+    <div class="admin-card animate-up">
+      <div class="admin-card-header">
+        <span class="admin-icon">📢</span>
+        <div class="admin-card-title">Send Notification</div>
+      </div>
+      <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem">Broadcast a message to all saved customers via WhatsApp</p>
+      <textarea class="notify-textarea" id="notifyMsg" placeholder="e.g. ✨ New chrome nail designs are in! Book now and get 20% off this weekend only. — Luxe Nails Studio"></textarea>
+      <button class="btn-notify" onclick="sendBroadcast()">📲 Send WhatsApp Blast</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header animate-up">
+    <div class="section-badge">Reach Us</div>
+    <h2 class="section-title">Get In <em>Touch</em></h2>
+    <div class="gold-divider"><span>✦</span></div>
+    <p class="section-subtitle">We'd love to hear from you</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card animate-up">
+      <span class="contact-icon">📞</span>
+      <div class="contact-label">Phone</div>
+      <div class="contact-value"><a href="tel:+254788784284">+254 788784284</a></div>
+      <a class="btn-whatsapp-contact" href="https://wa.me/254788784284" target="_blank">💬 Chat on WhatsApp</a>
+    </div>
+    <div class="contact-card animate-up">
+      <span class="contact-icon">📍</span>
+      <div class="contact-label">Location</div>
+      <div class="contact-value">Gilgil Town Centre<br>Nakuru County, Kenya</div>
+    </div>
+    <div class="contact-card animate-up">
+      <span class="contact-icon">🕐</span>
+      <div class="contact-label">Hours</div>
+      <div class="contact-value">Mon–Sat: 8am – 7pm<br>Sunday: 10am – 5pm</div>
+    </div>
+    <div class="contact-card animate-up">
+      <span class="contact-icon">🌐</span>
+      <div class="contact-label">Follow Us</div>
+      <div class="contact-value">@luxenailsstudio</div>
+      <div class="social-links">
+        <a class="social-link" href="#" title="Instagram">📸</a>
+        <a class="social-link" href="#" title="Facebook">👍</a>
+        <a class="social-link" href="#" title="TikTok">🎵</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Luxe<span>Nails</span></div>
+  <div class="footer-copy">© 2025 Luxe Nails Studio · All rights reserved · Gilgil, Kenya</div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="fab-whatsapp" href="https://wa.me/254788784284?text=Hello%20Luxe%20Nails!%20I'd%20like%20to%20book%20an%20appointment." target="_blank" title="WhatsApp Us">💬</a>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Welcome 💅</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-tabs">
+      <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+      <button class="tab-btn" onclick="switchTab('signup')">Sign Up</button>
+    </div>
+    <!-- Login -->
+    <div class="tab-content active" id="tab-login">
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" class="form-input" id="loginPhone" placeholder="+254 7XX XXX XXX">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" id="loginPass" placeholder="••••••••">
+      </div>
+      <button class="btn-submit" onclick="doLogin()">Login</button>
+    </div>
+    <!-- Signup -->
+    <div class="tab-content" id="tab-signup">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-input" id="signupName" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" class="form-input" id="signupPhone" placeholder="+254 7XX XXX XXX">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" id="signupPass" placeholder="Create a password">
+      </div>
+      <button class="btn-submit" onclick="doSignup()">Create Account</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3 class="cart-title">Your Cart 🛍️</h3>
+    <button class="modal-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">💅</div>
+      <p>No designs selected yet.<br>Browse our gallery!</p>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">KES 0</span>
+    </div>
+    <button class="btn-whatsapp" onclick="checkoutWhatsApp()">
+      💬 Order via WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════
+//  DATA
+// ══════════════════════════════════════════════
+const DESIGNS = [
+  { id:1, name:'Rose Bloom Gel', desc:'Delicate floral art on soft pink gel base', price:3500, category:'gel', image:'/images/n1.jpg' },
+  { id:2, name:'Chrome Ombré', desc:'Seamless silver-to-rose chrome gradient', price:4000, category:'ombre', image:'/images/n2.jpg' },
+  { id:3, name:'Gold Foil French', desc:'Classic french tips with luxe gold foil', price:3000, category:'french', image:'/images/n3.jpg' },
+  { id:4, name:'Marble Acrylics', desc:'Hand-painted marble veining', price:5000, category:'acrylic', image:'/images/n4.jpg' },
+  { id:5, name:'Pastel Rainbow', desc:'Soft multi-color ombré', price:3800, category:'nail-art', image:'/images/n5.jpg' },
+  { id:6, name:'Nude Minimalist', desc:'Clean nude gel style', price:2500, category:'gel', image:'/images/n6.jpg'},
+  { id:7, name:'Glitter Explosion', desc:'Full coverage glitter acrylics', price:4500, category:'acrylic', image:'/images/n7.jpg' },
+  { id:8, name:'Floral Fantasy', desc:'3D floral nail art', price:5500, category:'nail-art', image:'/images/n8.jpg' },
+  { id:9, name:'Sleek Black Gel', desc:'Glossy black gel with minimalist accents', price:3000, category:'gel', image:'/images/n9.jpg' },
+  { id:10, name:'Ocean Waves', desc:'Blue-green ombré with wave patterns', price:4000, category:'ombre', image:'/images/n10.jpg' },
+  { id:11, name:'Pink Quartz', desc:'Soft pink acrylics with quartz-like shimmer', price:4500, category:'acrylic', image:'/images/n11.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a1.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a2.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a3.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a4.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a5.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a6.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a7.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a8.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a9.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a10.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a11.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a12.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a13.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a14.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a15.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a16.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a17.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a18.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a19.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a20.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a21.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a22.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a23.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a24.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a25.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a26.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a27.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a28.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a29.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a30.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a31.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a32.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a33.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a34.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a35.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a36.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a37.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a38.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a39.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a40.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a41.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a42.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a43.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a44.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a45.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a46.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a47.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a48.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a49.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a50.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a51.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a52.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/a53.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/n12.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/n12.jpg' },
+  { id:12, name:'Classic Red French', desc:'Timeless red tips on nude base', price:3200, category:'french', image:'/images/n12.jpg' },
+];
+
+
+const SLOTS = ['9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'];
+const WHATSAPP_NUMBER = '254788784284';
+
+// ══════════════════════════════════════════════
+//  STATE (localStorage-backed)
+// ══════════════════════════════════════════════
+let cart = [];
+let currentUser = null;
+let selectedSlot = null;
+
+function getStore(k, def) {
+  try { return JSON.parse(localStorage.getItem(k)) || def; } catch { return def; }
+}
+function setStore(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+
+let bookings = getStore('luxe_bookings', []);
+let customers = getStore('luxe_customers', []);
+
+function saveState() {
+  setStore('luxe_bookings', bookings);
+  setStore('luxe_customers', customers);
+}
+
+// ══════════════════════════════════════════════
+//  GALLERY
+// ══════════════════════════════════════════════
+function renderGallery(designs) {
+  const grid = document.getElementById('galleryGrid');
+  grid.innerHTML = designs.map(d => `
+    <div class="design-card animate-up" data-cat="${d.category}" id="card-${d.id}">
+      <div class="design-card-image">
+        <div class="design-visual">
+  <img src="${d.image}" style="width:100%; height:100%; object-fit:cover;">
+</div>
+
+
+        </div>
+        <div class="design-overlay"></div>
+        <div class="design-badge-card">KES ${d.price.toLocaleString()}</div>
+      </div>
+      <div class="design-card-body">
+        <div class="design-name">${d.name}</div>
+        <div class="design-desc">${d.desc}</div>
+        <div class="design-footer">
+          <div class="design-price">KES ${d.price.toLocaleString()}</div>
+          <button class="btn-select" id="btn-${d.id}" onclick="selectDesign(${d.id})">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  observeAnimations();
+}
+
+function filterDesigns(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = cat === 'all' ? DESIGNS : DESIGNS.filter(d => d.category === cat);
+  renderGallery(filtered);
+}
+
+function selectDesign(id) {
+  const d = DESIGNS.find(x => x.id === id);
+  const inCart = cart.findIndex(x => x.id === id);
+  const btn = document.getElementById('btn-' + id);
+  if (inCart >= 0) {
+    cart.splice(inCart, 1);
+    btn.textContent = 'Add to Cart';
+    btn.classList.remove('selected');
+    showToast('Removed from cart');
+  } else {
+    cart.push(d);
+    btn.textContent = '✓ Selected';
+    btn.classList.add('selected');
+    showToast(`${d.name} added to cart! 💅`);
+  }
+  updateCartUI();
+}
+
+// ══════════════════════════════════════════════
+//  CART
+// ══════════════════════════════════════════════
+function updateCartUI() {
+  const count = cart.length;
+  const cc = document.getElementById('cartCount');
+  cc.style.display = count > 0 ? 'flex' : 'none';
+  cc.textContent = count;
+
+  const body = document.getElementById('cartBody');
+  const footer = document.getElementById('cartFooter');
+
+  if (count === 0) {
+    body.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">💅</div><p>No designs selected yet.<br>Browse our gallery!</p></div>`;
+    footer.style.display = 'none';
+    return;
+  }
+
+  body.innerHTML = cart.map(d => `
+    <div class="cart-item">
+      <div class="cart-item-visual" style="background:${d.grad}"><img src="${d.image}" style="width:100%; height:100%; object-fit:cover;"></div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${d.name}</div>
+        <div class="cart-item-price">KES ${d.price.toLocaleString()}</div>
+      </div>
+      <button class="cart-item-remove" onclick="selectDesign(${d.id})">✕</button>
+    </div>
+  `).join('');
+
+  const total = cart.reduce((s, d) => s + d.price, 0);
+  document.getElementById('cartTotal').textContent = `KES ${total.toLocaleString()}`;
+  footer.style.display = 'block';
+}
+
+function toggleCart() {
+  document.getElementById('cartPanel').classList.toggle('open');
+}
+
+function checkoutWhatsApp() {
+  if (cart.length === 0) return;
+  const list = cart.map(d => `• ${d.name} (KES ${d.price.toLocaleString()})`).join('%0A');
+  const total = cart.reduce((s, d) => s + d.price, 0);
+  const msg = `Hello Luxe Nails Studio! 💅 I would like to order these nail designs:%0A%0A${list}%0A%0ATotal: KES ${total.toLocaleString()}%0A%0APlease confirm availability. Thank you!`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+}
+
+// ══════════════════════════════════════════════
+//  BOOKING
+// ══════════════════════════════════════════════
+function loadSlots() {
+  const date = document.getElementById('bookDate').value;
+  if (!date) return;
+
+  const todayBooked = bookings.filter(b => b.date === date).map(b => b.slot);
+  const slotsEl = document.getElementById('timeSlots');
+  selectedSlot = null;
+  document.getElementById('availMsg').className = 'availability-msg';
+
+  slotsEl.innerHTML = SLOTS.map(s => {
+    const isBooked = todayBooked.includes(s);
+    return `<div class="time-slot ${isBooked ? 'booked' : ''}" 
+      onclick="${isBooked ? '' : `pickSlot('${s}', this)`}"
+      title="${isBooked ? 'Already booked' : 'Available'}">${s}</div>`;
+  }).join('');
+
+  updateBookingSummary();
+}
+
+function pickSlot(slot, el) {
+  document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedSlot = slot;
+
+  const msg = document.getElementById('availMsg');
+  msg.className = 'availability-msg available';
+  msg.textContent = `✅ This slot is available! Fill in your details and confirm.`;
+  updateBookingSummary();
+}
+
+function updateBookingSummary() {
+  const name = document.getElementById('bookName').value;
+  const phone = document.getElementById('bookPhone').value;
+  const service = document.getElementById('bookService').value;
+  const date = document.getElementById('bookDate').value;
+
+  const el = document.getElementById('bookingSummaryItems');
+  el.innerHTML = `
+    <div class="summary-item"><span class="summary-label">Name</span><span class="summary-value">${name || '—'}</span></div>
+    <div class="summary-item"><span class="summary-label">Phone</span><span class="summary-value">${phone || '—'}</span></div>
+    <div class="summary-item"><span class="summary-label">Service</span><span class="summary-value">${service || '—'}</span></div>
+    <div class="summary-item"><span class="summary-label">Date</span><span class="summary-value">${date ? new Date(date + 'T12:00:00').toDateString() : '—'}</span></div>
+    <div class="summary-item"><span class="summary-label">Time</span><span class="summary-value">${selectedSlot || '—'}</span></div>
+  `;
+}
+
+['bookName','bookPhone','bookService','bookDate'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', updateBookingSummary);
+});
+
+function confirmBooking() {
+  const name = document.getElementById('bookName').value.trim();
+  const phone = document.getElementById('bookPhone').value.trim();
+  const service = document.getElementById('bookService').value;
+  const date = document.getElementById('bookDate').value;
+
+  if (!name || !phone || !service || !date || !selectedSlot) {
+    showToast('Please fill in all details and select a time slot');
+    return;
+  }
+
+  // Store booking
+  const booking = { id: Date.now(), name, phone, service, date, slot: selectedSlot, time: new Date().toISOString() };
+  bookings.unshift(booking);
+  saveState();
+
+  // Add/update customer
+  const existingIdx = customers.findIndex(c => c.phone === phone);
+  if (existingIdx >= 0) {
+    customers[existingIdx].bookings = (customers[existingIdx].bookings || 0) + 1;
+  } else {
+    customers.unshift({ name, phone, bookings: 1, joined: new Date().toLocaleDateString() });
+  }
+  saveState();
+  updateAdminUI();
+
+  // Send via WhatsApp
+  const dateStr = new Date(date + 'T12:00:00').toDateString();
+  const msg = `Hello Luxe Nails Studio! 💅%0A%0AI'd like to confirm my appointment:%0A%0A👤 Name: ${encodeURIComponent(name)}%0A📞 Phone: ${encodeURIComponent(phone)}%0A💅 Service: ${encodeURIComponent(service)}%0A📅 Date: ${encodeURIComponent(dateStr)}%0A🕐 Time: ${encodeURIComponent(selectedSlot)}%0A%0APlease confirm my booking. Thank you!`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+
+  showToast('Booking sent! Check WhatsApp for confirmation 🎉');
+
+  // Reset
+  document.getElementById('bookDate').value = '';
+  document.getElementById('bookService').value = '';
+  document.getElementById('bookName').value = '';
+  document.getElementById('bookPhone').value = '';
+  document.getElementById('timeSlots').innerHTML = '<p style="color:var(--muted);font-size:0.8rem;grid-column:span 3">Please select a date first</p>';
+  document.getElementById('availMsg').className = 'availability-msg';
+  selectedSlot = null;
+  updateBookingSummary();
+}
+
+// ══════════════════════════════════════════════
+//  AUTH
+// ══════════════════════════════════════════════
+function openModal() {
+  document.getElementById('authModal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('authModal').classList.remove('open');
+}
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', (i===0&&tab==='login')||(i===1&&tab==='signup')));
+  document.getElementById('tab-login').classList.toggle('active', tab === 'login');
+  document.getElementById('tab-signup').classList.toggle('active', tab === 'signup');
+}
+
+function doSignup() {
+  const name = document.getElementById('signupName').value.trim();
+  const phone = document.getElementById('signupPhone').value.trim();
+  const pass = document.getElementById('signupPass').value;
+  if (!name || !phone || !pass) { showToast('Please fill all fields'); return; }
+
+  const users = getStore('luxe_users', []);
+  if (users.find(u => u.phone === phone)) { showToast('Account with this number already exists'); return; }
+
+  users.push({ name, phone, pass, joined: new Date().toLocaleDateString() });
+  setStore('luxe_users', users);
+
+  if (!customers.find(c => c.phone === phone)) {
+    customers.unshift({ name, phone, bookings: 0, joined: new Date().toLocaleDateString() });
+    saveState();
+    updateAdminUI();
+  }
+
+  currentUser = { name, phone };
+  updateAuthUI();
+  closeModal();
+  showToast(`Welcome, ${name}! 💅`);
+}
+
+function doLogin() {
+  const phone = document.getElementById('loginPhone').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const users = getStore('luxe_users', []);
+  const user = users.find(u => u.phone === phone && u.pass === pass);
+  if (!user) { showToast('Incorrect phone or password'); return; }
+  currentUser = user;
+  updateAuthUI();
+  closeModal();
+  showToast(`Welcome back, ${user.name}! 💅`);
+}
+
+function logout() {
+  currentUser = null;
+  updateAuthUI();
+  showToast('Logged out');
+}
+
+function updateAuthUI() {
+  const loginBtn = document.getElementById('loginBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+  const authStatus = document.getElementById('authStatus');
+  const authName = document.getElementById('authName');
+  if (currentUser) {
+    loginBtn.style.display = 'none';
+    logoutBtn.style.display = 'block';
+    authStatus.style.display = 'flex';
+    authName.textContent = currentUser.name;
+    document.getElementById('bookName').value = currentUser.name;
+    document.getElementById('bookPhone').value = currentUser.phone;
+    updateBookingSummary();
+  } else {
+    loginBtn.style.display = 'block';
+    logoutBtn.style.display = 'none';
+    authStatus.style.display = 'none';
+  }
+}
+
+// ══════════════════════════════════════════════
+//  ADMIN
+// ══════════════════════════════════════════════
+function updateAdminUI() {
+  document.getElementById('statBookings').textContent = bookings.length;
+  document.getElementById('statCustomers').textContent = customers.length;
+
+  const bl = document.getElementById('adminBookingList');
+  if (bookings.length === 0) {
+    bl.innerHTML = '<p style="color:var(--muted);font-size:0.82rem">No bookings yet</p>';
+  } else {
+    bl.innerHTML = bookings.slice(0, 5).map(b => `
+      <div class="booking-entry">
+        <div>
+          <div class="be-name">${b.name}</div>
+          <div class="be-time">${b.service} · ${new Date(b.date + 'T12:00:00').toLocaleDateString()} ${b.slot}</div>
+        </div>
+        <span class="be-status">Confirmed</span>
+      </div>
+    `).join('');
+  }
+
+  const cl = document.getElementById('adminCustomerList');
+  if (customers.length === 0) {
+    cl.innerHTML = '<p style="color:var(--muted);font-size:0.82rem">No customers yet</p>';
+  } else {
+    cl.innerHTML = customers.slice(0, 5).map(c => `
+      <div class="customer-entry">
+        <div class="customer-avatar">${c.name.charAt(0).toUpperCase()}</div>
+        <div>
+          <div class="customer-name">${c.name}</div>
+          <div class="customer-meta">${c.phone} · ${c.bookings || 0} booking${c.bookings !== 1 ? 's' : ''}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+}
+
+function sendBroadcast() {
+  const msg = document.getElementById('notifyMsg').value.trim();
+  if (!msg) { showToast('Please type a message first'); return; }
+  if (customers.length === 0) { showToast('No customers to notify yet'); return; }
+  const encoded = encodeURIComponent(msg);
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+  showToast(`Notification sent to ${customers.length} customer(s) 📲`);
+}
+
+// ══════════════════════════════════════════════
+//  UI HELPERS
+// ══════════════════════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+document.getElementById('authModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Set min date for booking
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, '0');
+const dd = String(today.getDate()).padStart(2, '0');
+document.getElementById('bookDate').min = `${yyyy}-${mm}-${dd}`;
+
+// Animate on scroll
+function observeAnimations() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate-up').forEach(el => obs.observe(el));
+}
+
+// ══════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════
+renderGallery(DESIGNS);
+updateCartUI();
+updateAdminUI();
+observeAnimations();
+
+// Sticky nav shrink
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.style.padding = window.scrollY > 50 ? '0.7rem 3rem' : '1rem 3rem';
+});
+
+// Close cart when clicking outside
+document.addEventListener('click', e => {
+  const panel = document.getElementById('cartPanel');
+  const cartBtn = document.querySelector('.cart-btn');
+  if (panel.classList.contains('open') && !panel.contains(e.target) && !cartBtn.contains(e.target)) {
+    panel.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>
